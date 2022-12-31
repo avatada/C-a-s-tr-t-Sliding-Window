@@ -1,12 +1,16 @@
 /*
+    nhập testcase, n là số ;ượng số trong dãy, k là độ dài yeu cầu tìm trong dãy, nhập a[i] là dãy cần truy vết...
+    input:
     t = 1
     n = 10 
     k = 3 
     1 2 3 1 5 2 7 8 9 1
     tim doan con lien tiep k phan tu sao cho chung co tong lon nhat
+    output:
+    
 */
 #define FOR(i,a,b) for(i=a;i<=b;i++)
-#define FORR(i,a,b) for(i=b;i>=a;i++)
+#define FORR(i,b,a) for(i=b;i>=a;i--)
 #define el endl;
 #include<bits/stdc++.h>
 typedef long long ll;
@@ -34,12 +38,17 @@ int main()
         ans = sum = s;
         FOR(i,2,n){
             s = s - a[i-1] + a[i+k-1]; 
-            if(ans < s){
+            /*if(ans < s){
                 ans = i - k +1;
+            }*/
+            if(sum < s){
+                sum = s;
+                if(i > ans) ans = (i+k-1) ;
+                //cout<<sum<<endl;
             }
-            if(sum <= s) sum = s;
         }
-        cout<<sum;
+        cout<<sum<<endl;
+        FOR(i,1,k) cout<<a[ans-i+1]<< " "; 
     }
     
 }
